@@ -1,0 +1,22 @@
+{% extends 'mili/base.html' %}
+{% load static %}
+{% block extra_css %}
+  <link rel="stylesheet" type="text/css" href="{% static 'users/users.css' %}" />
+{% endblock %}
+{% block content %}
+  <div class="login-container md-5 mt-2">
+
+    <form class="loginform" action="">
+      <div class="avatar-container">
+        <i class="bi bi-person-circle avatar_profile"></i>
+    </div>
+      <h1>Login</h1>
+      <input type="text" placeholder="Username" name="username" />
+      <input type="password" placeholder="Password" name="password" />
+      <input type="submit" value="Login" />
+    </form>
+    
+<span>Create a new account?<a href="#">Register</a></span>
+  </div>
+  {% comment %} <h1>Helloo</h1> {% endcomment %}
+{% endblock %}

@@ -1,0 +1,125 @@
+{% extends 'mili/base.html' %}
+{% block content %}
+
+  <div class="container-fluid">
+    <div class="services">
+    
+    <div class="serv_head text-light" id="serv">
+       
+         
+    <form class="service_form">
+        <fieldset>
+        {% for service in services %}
+        <h1><legend>{{ service.title }}</legend>
+            {% if service.title == "water" %}
+            <i class="bi bi-droplet-half avatar"></i>
+        {% else %}
+        <i class="bi bi-trash3"></i>
+        {% endif %}
+        <hr>
+        <div class="text-field-container">
+            <i class="bi bi-person-circle large-icon"></i>
+        <input type="text" id="myTextField" placeholder="your Name ">
+    </div>
+    <div class="text-field-container">
+        <i class="bi bi-house-heart large-icon"></i>
+        <input type="text" id="myTextField" placeholder="your house number ">
+    </div>
+       {% comment %} <label>monthy rate: {{ service.monthly_rate }}</label><br> {% endcomment %}
+<div class="months">
+       <label class="checkbox-container" for="month">Payable month</label>
+       <div class="checkbox-grid">
+       <label class="checkbox-container" for="jan">
+        <input type="checkbox" id="jan" value="jan" data-qty=1>
+        <span class="custom-checkbox"></span>
+        Jan
+    </label>
+    <label class="checkbox-container" for="feb">
+        <input type="checkbox" id="feb" value="feb" data-qty=1>
+        <span class="custom-checkbox"></span>
+        Feb
+    </label>
+    <label class="checkbox-container" for="mar">
+        <input type="checkbox" id="mar" value="mar" data-qty=1>
+        <span class="custom-checkbox"></span>
+        Mar
+    </label>
+    <label class="checkbox-container" for="apr">
+        <input type="checkbox" id="apr" value="apr" data-qty=1>
+        <span class="custom-checkbox"></span>
+        Apr
+    </label>
+    <label class="checkbox-container" for="may">
+        <input type="checkbox" id="may" value="may" data-qty=1>
+        <span class="custom-checkbox"></span>
+        May
+    </label>
+    <label class="checkbox-container" for="jun">
+        <input type="checkbox" id="jun" value="jun" data-qty=1>
+        <span class="custom-checkbox"></span>
+        Jun
+    </label>
+    <label class="checkbox-container" for="jul">
+        <input type="checkbox" id="jul" value="jul" data-qty=1>
+        <span class="custom-checkbox"></span>
+        Jul
+    </label>
+    <label class="checkbox-container" for="aug">
+        <input type="checkbox" id="aug" value="aug" data-qty=1>
+        <span class="custom-checkbox"></span>
+        Aug
+    </label>
+    <label class="checkbox-container" for="sep">
+        <input type="checkbox" id="sep" value="sep" data-qty=1>
+        <span class="custom-checkbox"></span>
+        Sep
+    </label>
+    <label class="checkbox-container" for="oct">
+        <input type="checkbox" id="oct" value="oct" data-qty=1>
+        <span class="custom-checkbox"></span>
+        Oct
+    </label>
+    <label class="checkbox-container" for="nov">
+        <input type="checkbox" id="nov" value="nov" data-qty=1>
+        <span class="custom-checkbox"></span>
+        Nov
+    </label>
+    <label class="checkbox-container" for="dec">
+        <input type="checkbox" id="dec" value="dec" data-qty=1>
+        <span class="custom-checkbox"></span>
+        Dec
+    </label>
+       </div>
+</div>
+
+       {% if service.title == "water" %}
+       <div class="text-field-container">
+        <i class="bi bi-speedometer large-icon"></i>
+        <input type="text" id="myTextField" placeholder="Meter value" >
+        {% comment %} <label for="myTextField" class="text-field-label">Total</label> {% endcomment %}
+    </div>
+        {% endif %}
+   
+   
+
+       <div class="text-field-container">
+        <i class="bi bi-cash-coin large-icon"></i>
+        <input type="text" id="myTextField" placeholder="your total @ {{ service.monthly_rate }}" disabled>
+        {% comment %} <label for="myTextField" class="text-field-label">Total</label> {% endcomment %}
+    </div>
+     <div class="text-field-container">
+        <i class="bi bi-chat-square large-icon"></i>
+        <input type="text" id="myTextField" placeholder="Remarks" >
+    </div>
+     <button type="submit" class="btn btn-outline-primary pay-button">Pay Now</button>
+
+     <fieldset>
+    </form>
+    {% endfor %}
+    </div>
+</div>
+</div>
+{% endblock %}
+
+
+

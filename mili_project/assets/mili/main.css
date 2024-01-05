@@ -1,0 +1,318 @@
+body{
+background-color: #abb5ff;
+}
+
+
+
+#side_nav{
+    background: #000;
+    min-width: 250px;
+    max-width: 250px;
+    min-height: 100vh;
+    transition: all 0.3s;
+    position: fixed;
+    z-index: 12;
+    opacity: 0.7;
+}
+/* #side_nav:hover{
+    box-shadow: 10px 10px 90px 10px #ffde9c;
+} */
+.content{
+    min-height: 100vh;
+    width: 100%;
+}
+hr.h-color{
+    background: #eee;
+}
+
+.sidebar li.active{
+    background: #eee;
+    border-radius: 8px;
+}
+
+.sidebar li.active a, .sidebar li.active a:hover {
+color: #e20a0a;
+font-weight:bolder;
+filter: drop-shadow(10px 10px 10px 10px #ffde9c);
+}
+.sidebar li a{
+color: #fff;
+}
+
+@media(max-width: 767px){
+#side_nav{
+    margin-left: -250px;
+    position: absolute;
+    min-height: 100vh;
+    z-index: 1;
+
+}
+#side_nav.active{
+    margin-left: 0;
+    }
+}
+.content {
+    position: relative;
+    height: 100vh;
+    /* overflow: hidden;  */
+}
+
+.banner {
+    width: 100%; 
+    position: fixed;
+    /* opacity: 0.3; */
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+
+.intro{
+    z-index: 1;
+    left: 50% ;
+}
+
+
+.dashboard-content {
+    position: absolute;
+    top: 100%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+    background: transparent;
+    z-index: 3;
+}
+.intro{
+    width: 60%;
+    height: 70vh;
+    background: transparent;
+    z-index: 5;
+    background-color: rgba(195, 204, 255,0.5);
+    position: absolute;
+    top: 40%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    /* color: #bfe6ff; */
+    font-size: 6rem;
+    filter:grayscale();
+}
+
+.intro_div{
+    background-color: #000;
+}
+
+/* Additional styling for the dashboard content */
+.dashboard-content h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Add a background overlay to make the text more readable */
+.banner::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+}
+
+.services{
+    z-index: 1;
+    width: 100%;
+    top: 40%;
+    left: 60%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+	box-shadow: 0 5px 30px black;
+	box-sizing: border-box;
+}
+.serv_head{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 3;
+}
+
+.service_form{
+    border: 1px solid rgb(255, 255, 255);
+    width: 30%;
+    padding: 20px;
+    box-sizing: border-box;
+    box-shadow: 0px 0px 20px 10px;
+    background-image: url('../images/sky.jpg');
+    background-size: cover;
+}
+
+
+  .services::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/sky.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(5px);
+}
+
+
+.checkbox-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px; /* Adjust the gap between checkboxes */
+}
+
+/* Hide the default checkbox */
+.checkbox-container input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Style the custom checkbox container */
+.checkbox-container {
+    position: relative;
+    padding-left: 30px;
+    cursor: pointer;
+    user-select: none;
+    margin-bottom: 10px;
+    display: inline-block;
+    font-size: 20px ;
+}
+
+/* Style the custom checkbox */
+.checkbox-container .custom-checkbox {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    border: 2px solid#4CAF50;
+    background-color: #fff;
+}
+
+/* Style the custom checkbox when checked */
+.checkbox-container input:checked + .custom-checkbox {
+    background-color: rgb(28, 57, 75);
+    border: 2px solid #55a;
+}
+
+/* Style the checkmark inside the custom checkbox */
+.checkbox-container .custom-checkbox::after {
+    content: "\2713";
+    position: absolute;
+    left: 4px;
+    top: 2px;
+    font-size: 16px;
+    color: #0debeb;
+    visibility: hidden;
+}
+
+/* Show the checkmark when the custom checkbox is checked */
+.checkbox-container input:checked + .custom-checkbox::after {
+    visibility: visible;
+}
+
+/* input field */
+.text-field-container {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.text-field-container input[type="text"] {
+    width: 90%;
+    padding: 5px;
+    box-sizing: border-box;
+    /* border: 3px solid #1deb0a7a; */
+    border-radius: 5px;
+    font-size: 16px;
+
+
+
+
+    border: none;
+	border-bottom: 1px solid #fff;
+	background: transparent;
+	outline: none;
+	height: 40px;
+	color: #fff;
+	font-size: 16px;
+}
+
+.text-field-container input[type="text"]:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+.text-field-container input[type="text"]::placeholder {
+    color: #fcfcfc;
+    text-align: center;
+}
+
+/* Style the label for the text field */
+.text-field-label {
+    /* position: absolute; */
+    /* top: 50%; */
+    left: 10px;
+    /* transform: translateY(-50%); */
+    color: #555;
+    font-size: 14px;
+    pointer-events: none; /* Ensure the label doesn't interfere with input focus */
+    transition: 0.3s ease-out;
+}
+
+/* Move the label up when the text field is focused or has content */
+.text-field-container input[type="text"]:focus + .text-field-label,
+.text-field-container input[type="text"]:not(:placeholder-shown) + .text-field-label {
+    top: 10px;
+    font-size: 12px;
+    color: #09dbf7;
+}
+
+
+
+
+.pay-button {
+    padding: 10px 20px;
+    background-color: #0eec15;
+    color: #fff; 
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    z-index: 1;
+    position: relative;
+}
+
+.pay-button:hover {
+    background-color: #5a5e5a; 
+}
+
+.avatar {
+    font-size: 2em;
+}
+
+.large-icon {
+    font-size: 22px;
+}
+.months{
+    padding: 5px;
+    border: 1px solid rgb(255, 255, 255);
+    
+    box-shadow: 0px 0px 21px ;
+}
+.login{
+    padding: 10px;
+    top:90%
+}

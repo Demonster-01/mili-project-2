@@ -1,0 +1,96 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% if title%}
+    <title>{{title}}</title>
+    {% else%}
+    <title>mili project</title>
+    {% endif %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static "mili/main.css" %}">
+    {% block extra_css %}{% endblock %}
+
+
+  </head>
+  <body>
+    
+    <div class="main-container d-flex">
+      <div class="sidebar" id="side_nav">
+          <div class="header-box px-2 pt-3 pb-4 d-flex justify-content-between">
+              <h1 class="fs-4"><span class="bg-white text-dark rounded shadow px-2 me-2">Mili</span> <span
+                      class="text-white">Bakoo mili</span></h1>
+              <button class="btn d-md-none d-block close-btn px-1 py-0 text-white"><i class="bi bi-dash"></i>mee</button>
+          </div>
+
+          <ul class="list-unstyled px-2">
+              <li class="active"><a href="#" class="text-decoration-none px-3 py-2 d-block"><i
+                          class="bi bi-house-door-fill"></i> Dashboard</a></li>
+              <li class=""><a href="{% url 'waterbill' %}" class="text-decoration-none px-3 py-2 d-block"><i class="bi bi-droplet-half"></i>
+                      Water bill</a></li>
+              <li class=""><a href="{% url 'garbagebill' %}" class="text-decoration-none px-3 py-2 d-block d-flex justify-content-between">
+                      <span><i class="bi bi-trash"></i> Garbage bill</span>
+                      <span class="bg-dark rounded-pill text-white py-0 px-2">02</span>
+                  </a>
+              </li>
+              <li class=""><a href="{% url 'netbill' %}" class="text-decoration-none px-3 py-2 d-block"><i class="bi bi-wifi"></i> Net bill</a></li>
+              <li class=""><a href="#" class="text-decoration-none px-3 py-2 d-block"><i class="bi bi-chat-left-dots"></i>
+                      Messages</a></li>
+          </ul>
+          <hr class="h-color mx-2">
+
+          <ul class="list-unstyled px-2">
+              <li class=""><a href="#" class="text-decoration-none px-3 py-2 d-block"><i class="bi bi-person-square"></i>
+                      Profile</a></li>
+              <li class=""><a href="#" class="text-decoration-none px-3 py-2 d-block"><i class="bi bi-bell"></i>
+                      Notifications</a></li>
+
+          </ul>
+          <ul class="list-unstyled px-2 login">
+            <li class=""> <a href="{% url 'user:login' %}" class="text-decoration-none px-3 py-2 d-block"><i class="bi bi-person-square"></i>
+                    Login</a></li>
+            <li class=""><a href="#" class="text-decoration-none px-3 py-2 d-block"><i class="bi bi-bell"></i>
+                    Register</a></li>
+
+        </ul>
+
+      </div>
+      <div class="content">
+          <nav class="navbar navbar-expand-md navbar-light">
+              {% comment %} <div class="container-fluid"> {% endcomment %}
+                {% block content%}
+
+                {% endblock %}
+                 
+               
+              {% comment %} </div> {% endcomment %}
+          </nav>
+      </div>
+  </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  
+  <script>
+    $(".sidebar ul li").on('click', function () {
+      $(".sidebar ul li.active").removeClass('active');
+      $(this).addClass('active');
+  });
+
+  $('.open-btn').on('click', function () {
+      $('.sidebar').addClass('active');
+
+  });
+
+
+  $('.close-btn').on('click', function () {
+      $('.sidebar').removeClass('active');
+
+  })
+
+</script>
+  </body>
+</html>
