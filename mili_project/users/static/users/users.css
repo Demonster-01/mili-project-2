@@ -1,8 +1,9 @@
 body {
-    background-image: url('../images/outlinehills.jpg');
+    background-image: url('../photos/farm.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     color: #fff;
+    background-attachment: fixed;
     /* filter: grayscale(10); */
 }
 
@@ -21,7 +22,7 @@ body {
     align-items: center;
     text-align: center;
     
-    background-image: url('../images/outlinehills.jpg');
+    background-image: url('../photos/doodle.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     /* overflow: hidden; */
@@ -39,6 +40,7 @@ body {
 }
 
 .login-container input[type="text"],
+.login-container input[type="email"],
 .login-container input[type="password"] {
     width: 70%;
     padding: 10px;

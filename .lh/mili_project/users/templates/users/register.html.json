@@ -1,0 +1,18 @@
+{
+    "sourceFile": "mili_project/users/templates/users/register.html",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1704450416834,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1704450416834,
+            "name": "Commit-0",
+            "content": "<img src=\"{% static 'photos/cinemalogo.png' %}\" "
+        }
+    ]
+}
