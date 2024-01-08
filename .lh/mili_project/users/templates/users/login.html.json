@@ -1,0 +1,18 @@
+{
+    "sourceFile": "mili_project/users/templates/users/login.html",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1704695252146,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1704695252146,
+            "name": "Commit-0",
+            "content": "{% extends \"bako_mili/base.html\" %}\r\n{% load static %}\r\n{% block extra_css %}\r\n  <link rel=\"stylesheet\" type=\"text/css\" href=\"{% static 'users/users.css' %}\" />\r\n{% endblock %}\r\n{% block content %}\r\n  <div class=\"login-container md-5 mt-2\">\r\n\r\n    <form class=\"loginform\" action=\"\">\r\n      <div class=\"avatar-container\">\r\n        <i class=\"bi bi-person-circle avatar_profile\"></i>\r\n    </div>\r\n      <h1>Login</h1>\r\n      <input type=\"text\" placeholder=\"Username\" name=\"username\" />\r\n      <input type=\"password\" placeholder=\"Password\" name=\"password\" />\r\n      <input type=\"submit\" value=\"Login\" />\r\n    </form>\r\n    \r\n<span>Create a new account?<a href=\"#\">Register</a></span>\r\n  </div>\r\n  {% comment %} <h1>Helloo</h1> {% endcomment %}\r\n{% endblock %}\r\n"
+        }
+    ]
+}

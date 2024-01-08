@@ -3,11 +3,15 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 0,
+            "activePatchIndex": 1,
             "patches": [
                 {
                     "date": 1704450416834,
                     "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1704695261030,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,1 +1,25 @@\n-<img src=\"{% static 'photos/cinemalogo.png' %}\" \n\\ No newline at end of file\n+{% extends \"bako_mili/base.html\" %}\r\n+{% load static %}\r\n+{% block extra_css %}\r\n+  <link rel=\"stylesheet\" type=\"text/css\" href=\"{% static 'users/users.css' %}\" />\r\n+{% endblock %}\r\n+{% block content %}\r\n+  <div class=\"login-container md-5 mt-2\">\r\n+\r\n+    <form class=\"loginform\" action=\"\">\r\n+      <div class=\"avatar-container\">\r\n+        <i class=\"bi bi-person-add avatar_profile\"></i>\r\n+    </div>\r\n+      <h1>Register</h1>\r\n+      <input type=\"text\" placeholder=\"First Name\" name=\"firstname\" />\r\n+      <input type=\"text\" placeholder=\"Last Name\" name=\"lastname\" />\r\n+      <input type=\"email\" placeholder=\"email\" name=\"email\" />\r\n+      <input type=\"text\" placeholder=\"house no\" name=\"house_no\" />\r\n+      <input type=\"password\" placeholder=\"password\" name=\"password\" />\r\n+      <input type=\"password\" placeholder=\"confirm Password\" name=\"password2\" />\r\n+      <input type=\"submit\" value=\"Register\" />\r\n+    </form>\r\n+<span>Already have account?<a href=\"#\">Login</a></span>\r\n+  </div>\r\n+  {% comment %} <h1>Helloo</h1> {% endcomment %}\r\n+{% endblock %}\r\n"
                 }
             ],
             "date": 1704450416834,

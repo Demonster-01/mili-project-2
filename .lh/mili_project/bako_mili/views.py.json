@@ -1,0 +1,26 @@
+{
+    "sourceFile": "mili_project/bako_mili/views.py",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1704695112347,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1704695785998,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n from .models import Service\r\n \r\n # Create your views here.\r\n def index(request):\r\n-    return render(request, 'mili/index.html')\r\n+    return render(request, 'bako_mili/index.html')\r\n \r\n # def waterbill(request):\r\n #     services = Service.objects.all()  # Retrieve all services\r\n #     context = {\r\n@@ -16,19 +16,19 @@\n     water_services = Service.objects.filter(title='water')  # Assuming 'water' is a category for water services\r\n     context = {\r\n         'services': water_services,\r\n     }\r\n-    return render(request, 'mili/waterbill.html', context)\r\n+    return render(request, 'bako_mili/waterbill.html', context)\r\n \r\n def garbagebill(request):\r\n     garbage_services = Service.objects.filter(title='Garbage') \r\n     context = {\r\n         'services': garbage_services,\r\n     }\r\n-    return render(request, 'mili/waterbill.html', context)\r\n+    return render(request, 'bako_mili/waterbill.html', context)\r\n \r\n def netbill(request):\r\n     garbage_services = Service.objects.filter(title='Garbage') \r\n     context = {\r\n         'services': garbage_services,\r\n\\ No newline at end of file\n     }\r\n-    return render(request, 'mili/waterbill.html', context)\n+    return render(request, 'bako_mili/waterbill.html', context)\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1704695950728,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,15 +4,10 @@\n # Create your views here.\r\n def index(request):\r\n     return render(request, 'bako_mili/index.html')\r\n \r\n-# def waterbill(request):\r\n-#     services = Service.objects.all()  # Retrieve all services\r\n-#     context = {\r\n-#         'services': services,  # Use the plural form in the context\r\n-#     }\r\n-#     return render(request, 'mili/waterbill.html', context)\r\n \r\n+\r\n def waterbill(request):\r\n     water_services = Service.objects.filter(title='water')  # Assuming 'water' is a category for water services\r\n     context = {\r\n         'services': water_services,\r\n"
+                }
+            ],
+            "date": 1704695112347,
+            "name": "Commit-0",
+            "content": "from django.shortcuts import render\r\nfrom .models import Service\r\n\r\n# Create your views here.\r\ndef index(request):\r\n    return render(request, 'mili/index.html')\r\n\r\n# def waterbill(request):\r\n#     services = Service.objects.all()  # Retrieve all services\r\n#     context = {\r\n#         'services': services,  # Use the plural form in the context\r\n#     }\r\n#     return render(request, 'mili/waterbill.html', context)\r\n\r\ndef waterbill(request):\r\n    water_services = Service.objects.filter(title='water')  # Assuming 'water' is a category for water services\r\n    context = {\r\n        'services': water_services,\r\n    }\r\n    return render(request, 'mili/waterbill.html', context)\r\n\r\ndef garbagebill(request):\r\n    garbage_services = Service.objects.filter(title='Garbage') \r\n    context = {\r\n        'services': garbage_services,\r\n    }\r\n    return render(request, 'mili/waterbill.html', context)\r\n\r\ndef netbill(request):\r\n    garbage_services = Service.objects.filter(title='Garbage') \r\n    context = {\r\n        'services': garbage_services,\r\n    }\r\n    return render(request, 'mili/waterbill.html', context)"
+        }
+    ]
+}

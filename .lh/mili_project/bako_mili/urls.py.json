@@ -1,0 +1,18 @@
+{
+    "sourceFile": "mili_project/bako_mili/urls.py",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1704695148514,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1704695148514,
+            "name": "Commit-0",
+            "content": "\r\nfrom django.urls import path\r\nfrom .import views\r\n\r\nurlpatterns = [\r\n    path('',views.index,name=\"mili-index\"),\r\n    # path('waterbill/', views.waterbill, name='mili-waterbill'),\r\n    path('waterbill/',  views.waterbill, name='waterbill'),\r\n    path('garbagebill/',  views.garbagebill, name='garbagebill'),\r\n    path('netbill/',  views.netbill, name='netbill'),\r\n]\r\n"
+        }
+    ]
+}

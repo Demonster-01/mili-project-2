@@ -1,0 +1,18 @@
+{
+    "sourceFile": "mili_project/bako_mili/templates/mili/netbill.html",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1704695231175,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1704695231175,
+            "name": "Commit-0",
+            "content": "{% extends \"bako_mili/base.html\" %}\r\n{% block content %}\r\n\r\n <div class=\"container\">\r\n    <div></div>\r\n    <div></div>\r\n    <div></div>\r\n\r\n </div>\r\n{% endblock %}\r\n\r\n\r\n\r\n"
+        }
+    ]
+}
