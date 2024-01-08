@@ -1,0 +1,22 @@
+{
+    "sourceFile": "mili_project/bako_mili/models.py",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1704695161282,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1704695829651,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,8 +12,10 @@\n     date_posted = models.DateTimeField(default=timezone.now)\r\n \r\n     def __str__(self):\r\n         return self.title\r\n+    class Meta:\r\n+        app_label = 'bako_mili'\r\n     \r\n \r\n class Net(models.Model):\r\n     title = models.CharField(max_length=100)\r\n"
+                }
+            ],
+            "date": 1704695161282,
+            "name": "Commit-0",
+            "content": "from django.db import models\r\n\r\n# Create your models here.\r\nfrom django.db import models\r\nfrom django.utils import timezone\r\nfrom django.contrib.auth.models import User\r\n\r\n# Create your models here.\r\nclass Service(models.Model):\r\n    title = models.CharField(max_length=100)\r\n    monthly_rate=models.IntegerField(default=1)\r\n    date_posted = models.DateTimeField(default=timezone.now)\r\n\r\n    def __str__(self):\r\n        return self.title\r\n    \r\n\r\nclass Net(models.Model):\r\n    title = models.CharField(max_length=100)\r\n    monthly_rate=models.IntegerField(default=1)\r\n    speed=models.CharField(max_length=10)\r\n\r\n    def __str__(self):\r\n        return self.title\r\n\r\nclass Revenue(models.Model):\r\n    customer = models.ForeignKey(User, on_delete=models.DO_NOTHING)\r\n    amount = models.DecimalField(max_digits=8, decimal_places=2)\r\n    service = models.ForeignKey(Service, on_delete=models.DO_NOTHING, related_name='service')\r\n    # net = models.ForeignKey(net, on_delete=models.DO_NOTHING, related_name='net',null=True)\r\n\r\n    transaction_date = models.DateField(default=timezone.now)\r\n    remark=models.CharField(max_length=50)\r\n    paid_from=models.CharField(max_length=10,default=\"Online\")\r\n\r\n    def __str__(self):\r\n        return f\"{self.customer.username} - {self.service.title}\""
+        }
+    ]
+}

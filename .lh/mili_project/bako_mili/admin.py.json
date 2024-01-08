@@ -1,0 +1,22 @@
+{
+    "sourceFile": "mili_project/bako_mili/admin.py",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1704695183916,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1704696079965,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,8 @@\n from django.contrib import admin\r\n \r\n # Register your models here.\r\n-from .models import Service,Revenue\r\n+from .models import Service,Revenue,Net\r\n # Register your models here.\r\n admin.site.register(Service)\r\n\\ No newline at end of file\n-admin.site.register(Revenue)\n+admin.site.register(Revenue)\r\n+admin.site.register(Net)\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1704695183916,
+            "name": "Commit-0",
+            "content": "from django.contrib import admin\r\n\r\n# Register your models here.\r\nfrom .models import Service,Revenue\r\n# Register your models here.\r\nadmin.site.register(Service)\r\nadmin.site.register(Revenue)"
+        }
+    ]
+}

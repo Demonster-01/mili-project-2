@@ -32,7 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    "mili.apps.MiliConfig",
+    "bako_mili.apps.BakoMiliConfig",
     "users.apps.UsersConfig",
     "django.contrib.admin",
     "django.contrib.auth",
@@ -119,10 +119,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
-    ]
-STATIC_ROOT=os.path.join(BASE_DIR,'assets')
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'static')
+#     ]
+# STATIC_ROOT=os.path.join(BASE_DIR,'assets')
 
 
 # Default primary key field type
