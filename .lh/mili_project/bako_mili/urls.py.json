@@ -3,11 +3,19 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 0,
+            "activePatchIndex": 2,
             "patches": [
                 {
                     "date": 1704695148514,
                     "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1704729496855,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,9 @@\n \r\n from django.urls import path\r\n from .import views\r\n \r\n+app_name = 'bako_mili' \r\n urlpatterns = [\r\n     path('',views.index,name=\"mili-index\"),\r\n     # path('waterbill/', views.waterbill, name='mili-waterbill'),\r\n     path('waterbill/',  views.waterbill, name='waterbill'),\r\n"
+                },
+                {
+                    "date": 1704730012154,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n from .import views\r\n \r\n app_name = 'bako_mili' \r\n urlpatterns = [\r\n-    path('',views.index,name=\"mili-index\"),\r\n+    path('',views.index,name=\"index\"),\r\n     # path('waterbill/', views.waterbill, name='mili-waterbill'),\r\n     path('waterbill/',  views.waterbill, name='waterbill'),\r\n     path('garbagebill/',  views.garbagebill, name='garbagebill'),\r\n     path('netbill/',  views.netbill, name='netbill'),\r\n"
                 }
             ],
             "date": 1704695148514,

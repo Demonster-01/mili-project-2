@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 1,
+            "activePatchIndex": 9,
             "patches": [
                 {
                     "date": 1704450416834,
@@ -12,6 +12,38 @@
                 {
                     "date": 1704695261030,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,1 +1,25 @@\n-<img src=\"{% static 'photos/cinemalogo.png' %}\" \n\\ No newline at end of file\n+{% extends \"bako_mili/base.html\" %}\r\n+{% load static %}\r\n+{% block extra_css %}\r\n+  <link rel=\"stylesheet\" type=\"text/css\" href=\"{% static 'users/users.css' %}\" />\r\n+{% endblock %}\r\n+{% block content %}\r\n+  <div class=\"login-container md-5 mt-2\">\r\n+\r\n+    <form class=\"loginform\" action=\"\">\r\n+      <div class=\"avatar-container\">\r\n+        <i class=\"bi bi-person-add avatar_profile\"></i>\r\n+    </div>\r\n+      <h1>Register</h1>\r\n+      <input type=\"text\" placeholder=\"First Name\" name=\"firstname\" />\r\n+      <input type=\"text\" placeholder=\"Last Name\" name=\"lastname\" />\r\n+      <input type=\"email\" placeholder=\"email\" name=\"email\" />\r\n+      <input type=\"text\" placeholder=\"house no\" name=\"house_no\" />\r\n+      <input type=\"password\" placeholder=\"password\" name=\"password\" />\r\n+      <input type=\"password\" placeholder=\"confirm Password\" name=\"password2\" />\r\n+      <input type=\"submit\" value=\"Register\" />\r\n+    </form>\r\n+<span>Already have account?<a href=\"#\">Login</a></span>\r\n+  </div>\r\n+  {% comment %} <h1>Helloo</h1> {% endcomment %}\r\n+{% endblock %}\r\n"
+                },
+                {
+                    "date": 1704725777499,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n {% endblock %}\r\n {% block content %}\r\n   <div class=\"login-container md-5 mt-2\">\r\n \r\n-    <form class=\"loginform\" action=\"\">\r\n+    <form class=\"loginform\" action=\"\" method=\"POST\">\r\n       <div class=\"avatar-container\">\r\n         <i class=\"bi bi-person-add avatar_profile\"></i>\r\n     </div>\r\n       <h1>Register</h1>\r\n"
+                },
+                {
+                    "date": 1704725795973,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n {% endblock %}\r\n {% block content %}\r\n   <div class=\"login-container md-5 mt-2\">\r\n \r\n-    <form class=\"loginform\" action=\"\" method=\"POST\">\r\n+    <form class=\"loginform\" action=\"{% url 'user:register' %}\" method=\"POST\">\r\n       <div class=\"avatar-container\">\r\n         <i class=\"bi bi-person-add avatar_profile\"></i>\r\n     </div>\r\n       <h1>Register</h1>\r\n"
+                },
+                {
+                    "date": 1704725835681,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,8 +6,10 @@\n {% block content %}\r\n   <div class=\"login-container md-5 mt-2\">\r\n \r\n     <form class=\"loginform\" action=\"{% url 'user:register' %}\" method=\"POST\">\r\n+      \r\n+      {% csrf_token %}\r\n       <div class=\"avatar-container\">\r\n         <i class=\"bi bi-person-add avatar_profile\"></i>\r\n     </div>\r\n       <h1>Register</h1>\r\n"
+                },
+                {
+                    "date": 1704731398089,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,8 +12,15 @@\n       <div class=\"avatar-container\">\r\n         <i class=\"bi bi-person-add avatar_profile\"></i>\r\n     </div>\r\n       <h1>Register</h1>\r\n+      {% if invalid_creds %}\r\n+  <div class=\"alert alert-warning\">\r\n+    {% for message in messages.get_messages %}\r\n+      <p>{{ message }}</p>\r\n+    {% endfor %}\r\n+  </div>\r\n+{% endif %}\r\n       <input type=\"text\" placeholder=\"First Name\" name=\"firstname\" />\r\n       <input type=\"text\" placeholder=\"Last Name\" name=\"lastname\" />\r\n       <input type=\"email\" placeholder=\"email\" name=\"email\" />\r\n       <input type=\"text\" placeholder=\"house no\" name=\"house_no\" />\r\n"
+                },
+                {
+                    "date": 1704731514823,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,34 +1,33 @@\n-{% extends \"bako_mili/base.html\" %}\r\n+{% extends 'bako_mili/base.html' %}\r\n {% load static %}\r\n {% block extra_css %}\r\n   <link rel=\"stylesheet\" type=\"text/css\" href=\"{% static 'users/users.css' %}\" />\r\n {% endblock %}\r\n {% block content %}\r\n   <div class=\"login-container md-5 mt-2\">\r\n-\r\n     <form class=\"loginform\" action=\"{% url 'user:register' %}\" method=\"POST\">\r\n-      \r\n       {% csrf_token %}\r\n       <div class=\"avatar-container\">\r\n         <i class=\"bi bi-person-add avatar_profile\"></i>\r\n-    </div>\r\n+      </div>\r\n       <h1>Register</h1>\r\n-      {% if invalid_creds %}\r\n-  <div class=\"alert alert-warning\">\r\n-    {% for message in messages.get_messages %}\r\n-      <p>{{ message }}</p>\r\n-    {% endfor %}\r\n-  </div>\r\n-{% endif %}\r\n+\r\n       <input type=\"text\" placeholder=\"First Name\" name=\"firstname\" />\r\n       <input type=\"text\" placeholder=\"Last Name\" name=\"lastname\" />\r\n       <input type=\"email\" placeholder=\"email\" name=\"email\" />\r\n       <input type=\"text\" placeholder=\"house no\" name=\"house_no\" />\r\n       <input type=\"password\" placeholder=\"password\" name=\"password\" />\r\n       <input type=\"password\" placeholder=\"confirm Password\" name=\"password2\" />\r\n       <input type=\"submit\" value=\"Register\" />\r\n     </form>\r\n-<span>Already have account?<a href=\"#\">Login</a></span>\r\n+    <span>Already have account?<a href=\"#\">Login</a></span>\r\n+    {% if invalid_creds %}\r\n+    <div class=\"alert alert-warning\">\r\n+      {% for message in messages.get_messages %}\r\n+        <p>{{ message }}</p>\r\n+      {% endfor %}\r\n+    </div>\r\n+  {% endif %}\r\n   </div>\r\n   {% comment %} <h1>Helloo</h1> {% endcomment %}\r\n {% endblock %}\r\n"
+                },
+                {
+                    "date": 1704731605376,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,8 +13,9 @@\n       <h1>Register</h1>\r\n \r\n       <input type=\"text\" placeholder=\"First Name\" name=\"firstname\" />\r\n       <input type=\"text\" placeholder=\"Last Name\" name=\"lastname\" />\r\n+      <input type=\"text\" placeholder=\"Username\" name=\"Username\" />\r\n       <input type=\"email\" placeholder=\"email\" name=\"email\" />\r\n       <input type=\"text\" placeholder=\"house no\" name=\"house_no\" />\r\n       <input type=\"password\" placeholder=\"password\" name=\"password\" />\r\n       <input type=\"password\" placeholder=\"confirm Password\" name=\"password2\" />\r\n"
+                },
+                {
+                    "date": 1704731677779,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,14 +21,13 @@\n       <input type=\"password\" placeholder=\"confirm Password\" name=\"password2\" />\r\n       <input type=\"submit\" value=\"Register\" />\r\n     </form>\r\n     <span>Already have account?<a href=\"#\">Login</a></span>\r\n-    {% if invalid_creds %}\r\n-    <div class=\"alert alert-warning\">\r\n-      {% for message in messages.get_messages %}\r\n-        <p>{{ message }}</p>\r\n-      {% endfor %}\r\n-    </div>\r\n-  {% endif %}\r\n+    {% if messages %}\r\n+  {% for message in messages %}\r\n+    <div class=\"alert alert-{{ message.tags }}\">{{ message }}</div>\r\n+  {% endfor %}\r\n+{% endif %}\r\n+\r\n   </div>\r\n   {% comment %} <h1>Helloo</h1> {% endcomment %}\r\n {% endblock %}\r\n"
+                },
+                {
+                    "date": 1704733199061,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,8 @@\n       <h1>Register</h1>\r\n \r\n       <input type=\"text\" placeholder=\"First Name\" name=\"firstname\" />\r\n       <input type=\"text\" placeholder=\"Last Name\" name=\"lastname\" />\r\n-      <input type=\"text\" placeholder=\"Username\" name=\"Username\" />\r\n       <input type=\"email\" placeholder=\"email\" name=\"email\" />\r\n       <input type=\"text\" placeholder=\"house no\" name=\"house_no\" />\r\n       <input type=\"password\" placeholder=\"password\" name=\"password\" />\r\n       <input type=\"password\" placeholder=\"confirm Password\" name=\"password2\" />\r\n"
                 }
             ],
             "date": 1704450416834,

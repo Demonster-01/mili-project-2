@@ -1,109 +1,52 @@
-{% extends "bako_mili/base.html" %}
-{% block content %}
-
-  <div class="container-fluid">
-    <div class="services">
-    
-    <div class="serv_head text-light" id="serv">
-       
-         
-    <form class="service_form">
-        <fieldset>
-        {% for service in services %}
-        <h1><legend>{{ service.title }}</legend>
-        <i class="bi bi-droplet-half avatar"></i></h1>
-        <div class="text-field-container">
-            <i class="bi bi-person-circle"></i>
-        <input type="text" id="myTextField" placeholder="your Name ">
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        width: 100vw;
+        height: 100vh;
+        margin: 0px;
+      }
+      .curved {
+        background: #ff3c00;
+        color: #fff;
+        text-align: center;
+      }
+      
+      .curved h1 {
+        font-size: 4rem;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin-top: 0;
+      }
+      .curved p {
+        font-size: 2rem;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0 5rem 0 5rem;
+      }
+      .curved svg {
+        display: block;
+      }
+      
+      .curved.upper {
+        background: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="curved upper">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+        <path fill="#e7008a" fill-opacity="1" d="M0,128L48,122.7C96,117,192,107,288,106.7C384,107,480,117,576,154.7C672,192,768,256,864,234.7C960,213,1056,107,1152,90.7C1248,75,1344,149,1392,186.7L1440,224L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path>
+      </svg>
+      <div class="curved">
+        <h1>Welcome to the world of programming!</h1>
+        <p>This is a website dedicated to providing resources and tutorials for those interested in learning how to code. This is a website dedicated to providing resources and tutorials for those interested in learning how to code. This is a website dedicated to providing resources and tutorials for those interested in learning how to code. This is a website dedicated to providing resources and tutorials for those interested in learning how to code. This is a website dedicated to providing resources and tutorials for those interested in learning how to code. This is a website dedicated to providing educational resources for those interested in learning how to code. Whether</p>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+          <path fill="#e7008a" fill-opacity="1" d="M0,128L120,154.7C240,181,480,235,720,229.3C960,224,1200,160,1320,128L1440,96L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z"></path>
+        </svg>
+      </div>
     </div>
-    <div class="text-field-container">
-        <i class="bi bi-house-heart"></i>
-        <input type="text" id="myTextField" placeholder="your house number ">
-        {% comment %} <label for="myTextField" class="text-field-label">House no</label> {% endcomment %}
-    </div>
-       {% comment %} <label>monthy rate: {{ service.monthly_rate }}</label><br> {% endcomment %}
-
-       
-       <label class="checkbox-container" for="jan">
-        <input type="checkbox" id="jan" value="jan" data-qty=1>
-        <span class="custom-checkbox"></span>
-        Jan
-    </label>
-    <label class="checkbox-container" for="feb">
-        <input type="checkbox" id="feb" value="feb" data-qty=1>
-        <span class="custom-checkbox"></span>
-        Feb
-    </label>
-    <label class="checkbox-container" for="mar">
-        <input type="checkbox" id="mar" value="mar" data-qty=1>
-        <span class="custom-checkbox"></span>
-        Mar
-    </label>
-    <label class="checkbox-container" for="apr">
-        <input type="checkbox" id="apr" value="apr" data-qty=1>
-        <span class="custom-checkbox"></span>
-        Apr
-    </label>
-    <label class="checkbox-container" for="may">
-        <input type="checkbox" id="may" value="may" data-qty=1>
-        <span class="custom-checkbox"></span>
-        May
-    </label>
-    <label class="checkbox-container" for="jun">
-        <input type="checkbox" id="jun" value="jun" data-qty=1>
-        <span class="custom-checkbox"></span>
-        Jun
-    </label>
-    <br>
-    <label class="checkbox-container" for="jul">
-        <input type="checkbox" id="jul" value="jul" data-qty=1>
-        <span class="custom-checkbox"></span>
-        Jul
-    </label>
-    <label class="checkbox-container" for="aug">
-        <input type="checkbox" id="aug" value="aug" data-qty=1>
-        <span class="custom-checkbox"></span>
-        Aug
-    </label>
-    <label class="checkbox-container" for="sep">
-        <input type="checkbox" id="sep" value="sep" data-qty=1>
-        <span class="custom-checkbox"></span>
-        Sep
-    </label>
-    <label class="checkbox-container" for="oct">
-        <input type="checkbox" id="oct" value="oct" data-qty=1>
-        <span class="custom-checkbox"></span>
-        Oct
-    </label>
-    <label class="checkbox-container" for="nov">
-        <input type="checkbox" id="nov" value="nov" data-qty=1>
-        <span class="custom-checkbox"></span>
-        Nov
-    </label>
-    <label class="checkbox-container" for="dec">
-        <input type="checkbox" id="dec" value="dec" data-qty=1>
-        <span class="custom-checkbox"></span>
-        Dec
-    </label>
-    
-    
-
-       <br>
-       <div class="text-field-container">
-        <i class="bi bi-cash-coin"></i>
-        <input type="text" id="myTextField" placeholder="your total @ {{ service.monthly_rate }}" disabled>
-        {% comment %} <label for="myTextField" class="text-field-label">Total</label> {% endcomment %}
-    </div>
-     <div class="text-field-container">
-        <i class="bi bi-chat-square"></i>
-        <input type="text" id="myTextField" placeholder="Remarks" >
-    </div>
-     <button type="submit" class="btn btn-outline-primary pay-button">Pay Now</button>
-
-     <fieldset>
-    </form>
-    {% endfor %}
-    </div>
-</div>
-</div>
-{% endblock %}
+  </body>
+</html>

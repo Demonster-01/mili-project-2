@@ -1,0 +1,18 @@
+{
+    "sourceFile": "mili_project/users/models.py",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1704732374445,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1704732374445,
+            "name": "Commit-0",
+            "content": "from django.db import models\r\nfrom django.contrib.auth.models import User\r\nfrom PIL import Image\r\n\r\n\r\nclass Profile(models.Model):\r\n    user = models.OneToOneField(User, on_delete=models.CASCADE)\r\n    image = models.ImageField(default='default.jpg', upload_to='profile_pics')\r\n    house_no = models.CharField(max_length=10, unique=True)\r\n    contact = models.IntegerField(null=True)\r\n    \r\n\r\n    def __str__(self):\r\n        return f'{self.user.username} Profile'\r\n\r\n    def save(self):\r\n        super().save()\r\n\r\n        img = Image.open(self.image.path)\r\n\r\n        if img.height > 300 or img.width > 300:\r\n            output_size = (300, 300)\r\n            img.thumbnail(output_size)\r\n            img.save(self.image.path)"
+        }
+    ]
+}

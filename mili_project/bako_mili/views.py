@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Service
+from .models import Service,Net
 
 # Create your views here.
 def index(request):
@@ -21,9 +21,11 @@ def garbagebill(request):
     }
     return render(request, 'bako_mili/waterbill.html', context)
 
+
+
 def netbill(request):
-    garbage_services = Service.objects.filter(title='Garbage') 
+    nets = Net.objects.all()
     context = {
-        'services': garbage_services,
+        'nets': nets,
     }
-    return render(request, 'bako_mili/waterbill.html', context)
+    return render(request, 'bako_mili/netbill.html', context)

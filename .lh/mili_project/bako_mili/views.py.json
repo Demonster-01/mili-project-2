@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 2,
+            "activePatchIndex": 8,
             "patches": [
                 {
                     "date": 1704695112347,
@@ -16,6 +16,30 @@
                 {
                     "date": 1704695950728,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,15 +4,10 @@\n # Create your views here.\r\n def index(request):\r\n     return render(request, 'bako_mili/index.html')\r\n \r\n-# def waterbill(request):\r\n-#     services = Service.objects.all()  # Retrieve all services\r\n-#     context = {\r\n-#         'services': services,  # Use the plural form in the context\r\n-#     }\r\n-#     return render(request, 'mili/waterbill.html', context)\r\n \r\n+\r\n def waterbill(request):\r\n     water_services = Service.objects.filter(title='water')  # Assuming 'water' is a category for water services\r\n     context = {\r\n         'services': water_services,\r\n"
+                },
+                {
+                    "date": 1704697198488,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,7 +23,7 @@\n \r\n def netbill(request):\r\n     garbage_services = Service.objects.filter(title='Garbage') \r\n     context = {\r\n-        'services': garbage_services,\r\n+        'net': Net.objects.all()\r\n     }\r\n     return render(request, 'bako_mili/waterbill.html', context)\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1704697208588,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n from django.shortcuts import render\r\n-from .models import Service\r\n+from .models import Service,Net\r\n \r\n # Create your views here.\r\n def index(request):\r\n     return render(request, 'bako_mili/index.html')\r\n"
+                },
+                {
+                    "date": 1704697836473,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,9 +21,9 @@\n     }\r\n     return render(request, 'bako_mili/waterbill.html', context)\r\n \r\n def netbill(request):\r\n-    garbage_services = Service.objects.filter(title='Garbage') \r\n+    net =  Net.objects.all()\r\n     context = {\r\n-        'net': Net.objects.all()\r\n+        'net':\r\n     }\r\n     return render(request, 'bako_mili/waterbill.html', context)\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1704697844837,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,7 +23,7 @@\n \r\n def netbill(request):\r\n     net =  Net.objects.all()\r\n     context = {\r\n-        'net':\r\n+        'net': net,\r\n     }\r\n     return render(request, 'bako_mili/waterbill.html', context)\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1704697999896,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -25,5 +25,12 @@\n     net =  Net.objects.all()\r\n     context = {\r\n         'net': net,\r\n     }\r\n-    return render(request, 'bako_mili/waterbill.html', context)\n\\ No newline at end of file\n+    return render(request, 'bako_mili/waterbill.html', context)\r\n+\r\n+def netbill(request):\r\n+    nets = Net.objects.all()\r\n+    context = {\r\n+        'nets': nets,\r\n+    }\r\n+    return render(request, 'bako_mili/waterbill.html', context)\r\n"
+                },
+                {
+                    "date": 1704698475965,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,17 +20,12 @@\n         'services': garbage_services,\r\n     }\r\n     return render(request, 'bako_mili/waterbill.html', context)\r\n \r\n-def netbill(request):\r\n-    net =  Net.objects.all()\r\n-    context = {\r\n-        'net': net,\r\n-    }\r\n-    return render(request, 'bako_mili/waterbill.html', context)\r\n \r\n+\r\n def netbill(request):\r\n     nets = Net.objects.all()\r\n     context = {\r\n         'nets': nets,\r\n     }\r\n-    return render(request, 'bako_mili/waterbill.html', context)\r\n+    return render(request, 'bako_mili/netbill.html', context)\r\n"
                 }
             ],
             "date": 1704695112347,

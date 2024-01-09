@@ -28,28 +28,31 @@
           </div>
 
           <ul class="list-unstyled px-2">
-              <li class="active"><a href="#" class="text-decoration-none px-3 py-2 d-block"><i
+              <li class="active"><a href="{% url 'bako_mili:index' %}" class="text-decoration-none px-3 py-2 d-block"><i
                           class="bi bi-house-door-fill"></i> Dashboard</a></li>
-              <li class=""><a href="{% url 'waterbill' %}" class="text-decoration-none px-3 py-2 d-block"><i class="bi bi-droplet-half"></i>
+              <li class=""><a href="{% url 'bako_mili:waterbill' %}" class="text-decoration-none px-3 py-2 d-block"><i class="bi bi-droplet-half"></i>
                       Water bill</a></li>
-              <li class=""><a href="{% url 'garbagebill' %}" class="text-decoration-none px-3 py-2 d-block d-flex justify-content-between">
+              <li class=""><a href="{% url 'bako_mili:garbagebill' %}" class="text-decoration-none px-3 py-2 d-block d-flex justify-content-between">
                       <span><i class="bi bi-trash"></i> Garbage bill</span>
-                      <span class="bg-dark rounded-pill text-white py-0 px-2">02</span>
+                      {% comment %} <span class="bg-dark rounded-pill text-white py-0 px-2">02</span> {% endcomment %}
                   </a>
               </li>
-              <li class=""><a href="{% url 'netbill' %}" class="text-decoration-none px-3 py-2 d-block"><i class="bi bi-wifi"></i> Net bill</a></li>
+              <li class=""><a href="{% url 'bako_mili:netbill' %}" class="text-decoration-none px-3 py-2 d-block"><i class="bi bi-wifi"></i> Net bill</a></li>
               <li class=""><a href="#" class="text-decoration-none px-3 py-2 d-block"><i class="bi bi-chat-left-dots"></i>
                       Messages</a></li>
           </ul>
           <hr class="h-color mx-2">
-
+          {% if user.is_authenticated %}
           <ul class="list-unstyled px-2">
-              <li class=""><a href="#" class="text-decoration-none px-3 py-2 d-block"><i class="bi bi-person-square"></i>
+              <li class=""><a href="{% url 'user:profile' %}" class="text-decoration-none px-3 py-2 d-block"><i class="bi bi-person-square"></i>
                       Profile</a></li>
               <li class=""><a href="#" class="text-decoration-none px-3 py-2 d-block"><i class="bi bi-bell"></i>
                       Notifications</a></li>
+              <li class=""><a href="{% url 'user:logout' %}" class="text-decoration-none px-3 py-2 d-block"><i class="bi bi-box-arrow-left"></i></i>
+                      Logout</a></li>
 
           </ul>
+          {% else %}
           <ul class="list-unstyled px-2 login">
             <li class=""> <a href="{% url 'user:login' %}" class="text-decoration-none px-3 py-2 d-block"><i class="bi bi-person-square"></i>
                     Login</a></li>
@@ -57,18 +60,15 @@
                     Register</a></li>
 
         </ul>
-
+        {% endif %}
       </div>
       <div class="content">
-          <nav class="navbar navbar-expand-md navbar-light">
-              {% comment %} <div class="container-fluid"> {% endcomment %}
                 {% block content%}
 
                 {% endblock %}
                  
                
-              {% comment %} </div> {% endcomment %}
-          </nav>
+              
       </div>
   </div>
 
@@ -92,5 +92,14 @@
   })
 
 </script>
+<script>
+  setTimeout(function() {
+    var alerts = document.querySelectorAll('.alert');
+    alerts.forEach(function(alert) {
+      alert.style.display = 'none';
+    });
+  }, 25000); // 60000 milliseconds = 1 minute
+</script>
+
   </body>
 </html>

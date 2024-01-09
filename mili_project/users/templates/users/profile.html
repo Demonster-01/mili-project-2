@@ -1,0 +1,17 @@
+{% extends "bako_mili/base.html" %}
+{% load static %}
+{% block extra_css %}
+  <link rel="stylesheet" type="text/css" href="{% static 'users/users.css' %}" />
+{% endblock %}
+{% block content %}
+    <div class="login-container">
+      <div class="media">
+        <h1>Welcome to Your Profile</h1>
+        <p>Username: {{ profile.user.username }}</p>
+        <p>Email: {{ profile.user.email }}</p>
+        <p>House Number: {{ profile.house_no }}</p>
+        <p>Contact: {{ profile.contact }}</p>
+        <img src="{{ profile.image.url }}" alt="Profile Picture">
+    </form>
+    </div>
+{% endblock %}

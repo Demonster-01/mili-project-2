@@ -1,0 +1,11 @@
+{% extends "bako_mili/base.html" %}
+{% block content %}
+    <div class=" container sm-md-6 pt-3 m-7">
+        
+<h2>you have been logged out</h2>
+        <small class="text-muted">
+            Login again?<a href="{% url 'user:login' %}" >Sign up</a>
+        </small>
+    </div>
+{% endblock content %}
+

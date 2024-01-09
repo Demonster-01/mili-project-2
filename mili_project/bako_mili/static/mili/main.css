@@ -1,10 +1,18 @@
-body{
-background-color: #abb5ff;
+body {
+    background-color: #abb5ff;
 }
 
+.content {
 
+    margin-left: 250px;
+}
 
-#side_nav{
+.sidebar {
+
+    float: left;
+}
+
+#side_nav {
     background: #000;
     min-width: 250px;
     max-width: 250px;
@@ -14,43 +22,49 @@ background-color: #abb5ff;
     z-index: 12;
     opacity: 0.7;
 }
+
 /* #side_nav:hover{
     box-shadow: 10px 10px 90px 10px #ffde9c;
 } */
-.content{
+.content {
     min-height: 100vh;
     width: 100%;
 }
-hr.h-color{
+
+hr.h-color {
     background: #eee;
 }
 
-.sidebar li.active{
+.sidebar li.active {
     background: #eee;
     border-radius: 8px;
 }
 
-.sidebar li.active a, .sidebar li.active a:hover {
-color: #e20a0a;
-font-weight:bolder;
-filter: drop-shadow(10px 10px 10px 10px #ffde9c);
-}
-.sidebar li a{
-color: #fff;
+.sidebar li.active a,
+.sidebar li.active a:hover {
+    color: #e20a0a;
+    font-weight: bolder;
+    filter: drop-shadow(10px 10px 10px 10px #ffde9c);
 }
 
-@media(max-width: 767px){
-#side_nav{
-    margin-left: -250px;
-    position: absolute;
-    min-height: 100vh;
-    z-index: 1;
-
+.sidebar li a {
+    color: #fff;
 }
-#side_nav.active{
-    margin-left: 0;
+
+@media(max-width: 767px) {
+    #side_nav {
+        margin-left: -250px;
+        position: absolute;
+        min-height: 100vh;
+        z-index: 1;
+
+    }
+
+    #side_nav.active {
+        margin-left: 0;
     }
 }
+
 .content {
     position: relative;
     height: 100vh;
@@ -58,7 +72,7 @@ color: #fff;
 }
 
 .banner {
-    width: 100%; 
+    width: 100%;
     position: fixed;
     /* opacity: 0.3; */
     top: 0;
@@ -67,9 +81,9 @@ color: #fff;
 }
 
 
-.intro{
+.intro {
     z-index: 1;
-    left: 50% ;
+    left: 50%;
 }
 
 
@@ -83,12 +97,13 @@ color: #fff;
     background: transparent;
     z-index: 3;
 }
-.intro{
+
+.intro {
     width: 60%;
     height: 70vh;
     background: transparent;
     z-index: 5;
-    background-color: rgba(195, 204, 255,0.5);
+    background-color: rgba(195, 204, 255, 0.5);
     position: absolute;
     top: 40%;
     left: 60%;
@@ -96,10 +111,10 @@ color: #fff;
     text-align: center;
     /* color: #bfe6ff; */
     font-size: 6rem;
-    filter:grayscale();
+    filter: grayscale();
 }
 
-.intro_div{
+.intro_div {
     background-color: #000;
 }
 
@@ -122,18 +137,22 @@ color: #fff;
     z-index: 2;
 }
 
-.services{
+.services {
+    float: left;
+    position: relative;
     z-index: 1;
     width: 100%;
     top: 40%;
-    left: 60%;
+    /* left: 60%; */
     justify-content: center;
     align-items: center;
     text-align: center;
-	box-shadow: 0 5px 30px black;
-	box-sizing: border-box;
+    box-shadow: 0 5px 30px black;
+    box-sizing: border-box;
+    overflow-y: auto;
 }
-.serv_head{
+
+.serv_head {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -141,26 +160,29 @@ color: #fff;
     z-index: 3;
 }
 
-.service_form{
+.service_form {
     border: 1px solid rgb(255, 255, 255);
-    width: 30%;
+    width: 40%;
     padding: 20px;
     box-sizing: border-box;
     box-shadow: 0px 0px 20px 10px;
     background-image: url('../photos/hillls.jpg');
     background-size: cover;
+    position: relative;
+    z-index: 2;
+    overflow-y: auto;
     /* opacity: 0.3; */
 }
 
 
-  .services::before {
+.services::before {
     content: "";
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-image:  url('../photos/village.jpg');
+    background-image: url('../photos/village.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -171,7 +193,8 @@ color: #fff;
 .checkbox-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 10px; /* Adjust the gap between checkboxes */
+    gap: 10px;
+    /* Adjust the gap between checkboxes */
 }
 
 /* Hide the default checkbox */
@@ -189,7 +212,7 @@ color: #fff;
     user-select: none;
     margin-bottom: 10px;
     display: inline-block;
-    font-size: 20px ;
+    font-size: 20px;
 }
 
 /* Style the custom checkbox */
@@ -204,7 +227,7 @@ color: #fff;
 }
 
 /* Style the custom checkbox when checked */
-.checkbox-container input:checked + .custom-checkbox {
+.checkbox-container input:checked+.custom-checkbox {
     background-color: rgb(28, 57, 75);
     border: 2px solid #55a;
 }
@@ -221,7 +244,7 @@ color: #fff;
 }
 
 /* Show the checkmark when the custom checkbox is checked */
-.checkbox-container input:checked + .custom-checkbox::after {
+.checkbox-container input:checked+.custom-checkbox::after {
     visibility: visible;
 }
 
@@ -239,16 +262,13 @@ color: #fff;
     border-radius: 5px;
     font-size: 16px;
 
-
-
-
     border: none;
-	border-bottom: 1px solid #fff;
-	background: transparent;
-	outline: none;
-	height: 40px;
-	color: #fff;
-	font-size: 16px;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: #fff;
+    font-size: 16px;
 }
 
 .text-field-container input[type="text"]:focus {
@@ -269,13 +289,14 @@ color: #fff;
     /* transform: translateY(-50%); */
     color: #555;
     font-size: 14px;
-    pointer-events: none; /* Ensure the label doesn't interfere with input focus */
+    pointer-events: none;
+    /* Ensure the label doesn't interfere with input focus */
     transition: 0.3s ease-out;
 }
 
 /* Move the label up when the text field is focused or has content */
-.text-field-container input[type="text"]:focus + .text-field-label,
-.text-field-container input[type="text"]:not(:placeholder-shown) + .text-field-label {
+.text-field-container input[type="text"]:focus+.text-field-label,
+.text-field-container input[type="text"]:not(:placeholder-shown)+.text-field-label {
     top: 10px;
     font-size: 12px;
     color: #09dbf7;
@@ -287,7 +308,7 @@ color: #fff;
 .pay-button {
     padding: 10px 20px;
     background-color: #0eec15;
-    color: #fff; 
+    color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -297,7 +318,7 @@ color: #fff;
 }
 
 .pay-button:hover {
-    background-color: #5a5e5a; 
+    background-color: #5a5e5a;
 }
 
 .avatar {
@@ -307,13 +328,51 @@ color: #fff;
 .large-icon {
     font-size: 22px;
 }
-.months{
+
+.months {
     padding: 5px;
     border: 1px solid rgb(255, 255, 255);
-    
-    box-shadow: 0px 0px 21px ;
+
+    box-shadow: 0px 0px 21px;
 }
-.login{
+
+.login {
     padding: 10px;
-    top:90%
+    top: 90%
+}
+
+.netbill {
+    height: 100vh;
+}
+
+.netbill input[type="text"] {
+    width: 70%;
+    padding: 5px;
+    margin: 5px;
+    border: none;
+    border-bottom: 3px solid rgb(243, 100, 4);
+    border-radius: 10px;
+    outline: none;
+}
+
+.years {
+    /* width: 90%; */
+    text-align: center;
+    justify-content: center;
+    display: grid;
+    /* align-content: start; */
+}
+
+.avatar_profile {
+    position: absolute;
+    top: -10px;
+    /* Adjust this value to position the avatar */
+    left: 50%;
+    transform: translateX(-50%);
+    color: whitesmoke;
+    text-shadow: 0px 4px 14px rgba(150, 159, 236, 0.815);
+    font-size: 3em;
+    /* Adjust the size of the avatar */
+    z-index: 2;
+    /* Ensure the avatar is above other content */
 }
