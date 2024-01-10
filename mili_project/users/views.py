@@ -1,16 +1,16 @@
 
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login as auth_login
 from django.contrib import messages
 from django.contrib.auth.models import User
 from .models import Profile
 from django.urls import reverse
-from django.shortcuts import get_object_or_404
 from django.contrib.auth.decorators import login_required
-
+from django.core.exceptions import ObjectDoesNotExist
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
-
 from django.views.decorators.csrf import csrf_protect
+
+from django.db import IntegrityError
 # Create your views here.
 # def login(request):
 #     return render(request, 'users/login.html')
@@ -41,78 +41,56 @@ def login_view(request):
     return render(request, 'users/login.html')
 
 
-@csrf_protect
-# def register(request):
-#     if request.method == 'POST':
-#         first_name = request.POST.get('firstname')
-#         last_name = request.POST.get('lastname')
-#         email = request.POST.get('email')
-#         house_no = request.POST.get('house_no')
-#         password = request.POST.get('password')
-#         password2 = request.POST.get('password2')
 
-#         # Basic validation
-#         if not (first_name and last_name and email and house_no and password and password2):
-#             messages.warning(request, 'Please fill in all fields.')
-#             return render(request, 'users/register.html', {'invalid_creds': True})
-
-#         if password != password2:
-#             messages.warning(request, 'Passwords do not match.')
-#             return render(request, 'users/register.html', {'invalid_creds': True})
-
-#         if User.objects.filter(email=email).exists():
-#             messages.warning(request, 'This email is already registered.')
-#             return render(request, 'users/register.html', {'invalid_creds': True})
-
-#         # Create a new user
-#         user = User.objects.create_user(
-#             email=email,
-#             username=email,
-#             password=password
-#         )
-#         user.first_name = first_name
-#         user.last_name = last_name
-
-#         user.save()
-#         # Create a new profile
-#         profile = Profile(user=user, house_no=house_no)
-#         profile.save()
-
-#         messages.success(request, 'Registration successful. You can now login.')
-#         return HttpResponseRedirect(reverse('user:login')) # Redirect to login page or any other page
-
-#     return render(request, 'users/register.html')
-
-
-
-# @login_required
+@login_required
 # def profile(request):
-#     if request.user.is_authenticated:
-#         profile = Profile.objects.get(user=request.user)
-#         return render(request, 'users/profile.html', {'profile': profile, 'user': request.user})
-#     else:
-#         return redirect('login')
-
+#     try:
+#         user_profile = request.user.profile  # Access the user's profile
+#     except ObjectDoesNotExist:
+#         user_profile = None  # Handle the case where the profile doesn't exist
+#     return render(request, 'users/profile.html', {'user_profile': user_profile})
 
 def profile(request):
-    if request.user.is_authenticated:
-        profile = get_object_or_404(Profile, user=request.user)
-        return render(request, 'profile.html', {'profile': profile, 'user': request.user})
-    else:
-        return redirect('login')
-    
-    
+    try:
+        user_profile = request.user.profile
+        u_form = UserUpdateForm(instance=request.user)
+        p_form = ProfileUpdateForm(instance=request.user.profile)
 
+        context = {
+            'u_form': u_form,
+            'p_form': p_form,
+            'user_profile': user_profile
+        }
+    except ObjectDoesNotExist:
+        user_profile = None
+        context = {
+            'user_profile': user_profile
+        }
+
+    if request.method == 'POST':
+        u_form = UserUpdateForm(request.POST, instance=request.user)
+        p_form = ProfileUpdateForm(request.POST,
+                                   request.FILES,
+                                   instance=request.user.profile)
+        if u_form.is_valid() and p_form.is_valid():
+            u_form.save()
+            p_form.save()
+            messages.success(request, f'Your account has been updated!')
+            return redirect('user:profile')
+
+    return render(request, 'users/profile.html', context)
 
 @csrf_protect
 def register(request):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
         if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            messages.success(request, f'Your account has been created! You are now able to log in')
-            return redirect('login')
+            try:
+                form.save()
+                messages.success(request, 'Your account has been created! You can now log in.')
+                return redirect('user:login')
+            except IntegrityError as e:
+                form.add_error('email', 'This email is already in use.')  # Show error in the form
     else:
         form = UserRegisterForm()
     return render(request, 'users/register.html', {'form': form})
