@@ -13,11 +13,14 @@ def get_graph():
     buffer.close()
     return graph
 
-def get_plot(x,y):
+def get_plot(x,y,a,b):
     plt.switch_backend("AGG")
     plt.figure(figsize=(6,5))
     plt.title('income and exp')
-    plt.plot(x,y)
+    # plt.plot(x,y)
+    plt.plot(x, y, label='Income', marker='o')
+    # plt.plot(a,b)
+    plt.plot(a, b, label='Expense', marker='x')
     plt.xticks(rotation=45)
     plt.xlabel("date")
     plt.ylabel('amount')

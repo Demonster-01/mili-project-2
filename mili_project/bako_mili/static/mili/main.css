@@ -1,6 +1,6 @@
 body {
     
-    background-color: whitesmoke;
+    background-color: #212529;
     margin: 0;
 }
 
@@ -88,7 +88,7 @@ hr.h-color {
 .banner-container {
     position: relative;
     width: 100%;
-    height: 2%; /* Set an appropriate height for the banner */
+    height: 2%; 
   }
   
 
@@ -213,7 +213,6 @@ hr.h-color {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
-    /* Adjust the gap between checkboxes */
 }
 
 /* Hide the default checkbox */
@@ -223,7 +222,6 @@ hr.h-color {
     cursor: pointer;
 }
 
-/* Style the custom checkbox container */
 .checkbox-container {
     position: relative;
     padding-left: 30px;
@@ -234,7 +232,6 @@ hr.h-color {
     font-size: 20px;
 }
 
-/* Style the custom checkbox */
 .checkbox-container .custom-checkbox {
     position: absolute;
     left: 0;
@@ -245,13 +242,11 @@ hr.h-color {
     background-color: #fff;
 }
 
-/* Style the custom checkbox when checked */
 .checkbox-container input:checked+.custom-checkbox {
     background-color: rgb(28, 57, 75);
     border: 2px solid #55a;
 }
 
-/* Style the checkmark inside the custom checkbox */
 .checkbox-container .custom-checkbox::after {
     content: "\2713";
     position: absolute;
@@ -262,7 +257,6 @@ hr.h-color {
     visibility: hidden;
 }
 
-/* Show the checkmark when the custom checkbox is checked */
 .checkbox-container input:checked+.custom-checkbox::after {
     visibility: visible;
 }
@@ -277,7 +271,6 @@ hr.h-color {
     width: 90%;
     padding: 5px;
     box-sizing: border-box;
-    /* border: 3px solid #1deb0a7a; */
     border-radius: 5px;
     font-size: 16px;
 
@@ -300,20 +293,14 @@ hr.h-color {
     text-align: center;
 }
 
-/* Style the label for the text field */
 .text-field-label {
-    /* position: absolute; */
-    /* top: 50%; */
     left: 10px;
-    /* transform: translateY(-50%); */
     color: #555;
     font-size: 14px;
     pointer-events: none;
-    /* Ensure the label doesn't interfere with input focus */
     transition: 0.3s ease-out;
 }
 
-/* Move the label up when the text field is focused or has content */
 .text-field-container input[type="text"]:focus+.text-field-label,
 .text-field-container input[type="text"]:not(:placeholder-shown)+.text-field-label {
     top: 10px;
@@ -375,25 +362,20 @@ hr.h-color {
 }
 
 .years {
-    /* width: 90%; */
     text-align: center;
     justify-content: center;
     display: grid;
-    /* align-content: start; */
 }
 
 .avatar_profile {
     position: absolute;
     top: -10px;
-    /* Adjust this value to position the avatar */
     left: 50%;
     transform: translateX(-50%);
     color: whitesmoke;
     text-shadow: 0px 4px 14px rgba(150, 159, 236, 0.815);
     font-size: 3em;
-    /* Adjust the size of the avatar */
     z-index: 2;
-    /* Ensure the avatar is above other content */
 }
 
 
@@ -406,28 +388,34 @@ hr.h-color {
 }
 
 
-.center-form {
-    /* width: 100vw; */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* Optional: Center vertically within the viewport */
+.center_form {
+    background-color: #4c4c4c;
+    color: wheat;
+    max-width: 1500px;
+    margin: auto;
+    
     background: linear-gradient(45deg, rgb(13, 75, 80), rgba(198, 232, 5, 0.534));
 }
-
-.income{
-    width: 80%;  /* Adjust the width as needed */
-    max-width: 400px; 
-    border: 1px solid  rgb(13, 75, 80);
-    box-shadow: 10px 10px 10px rgba(198, 232, 5, 0.534) ;
-    border-radius: 25px;
-    padding: 30px;
-    background-color: red;
-    box-sizing: border-box;
-    margin-left: 40px;
-   
+#customMargin {
+    margin-left: 250px;
 }
 
-.graph{
-    /* background-color: gray; */
+@media (max-width: 991px) {
+    #customMargin {
+        margin-left: 0;
+    }
+}
+
+
+h4{
+    text-align: center;
+}
+
+.Downloaddata{
+    /* background-image: url(../photos/travel.jfif); */
+    background-size: cover;
+    background-repeat:no-repeat;
+    height: 100%;
+    mix-blend-mode: multiply;
+    background-color: #212529;
 }

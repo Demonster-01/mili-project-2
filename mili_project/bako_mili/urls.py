@@ -10,4 +10,5 @@ urlpatterns = [
     path('garbagebill/',  views.garbagebill, name='garbagebill'),
     path('netbill/',  views.netbill, name='netbill'),
     path('income/',  views.income, name='income'),
+    path('data/',  views.data, name='data'),
 ]

@@ -1,0 +1,72 @@
+{% extends 'bako_mili/base.html' %}
+
+{% block content %}
+
+<div class="container-fluid Downloaddata">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6 mb-3">
+            <button onclick="showIncome()" class="btn btn-success">Show Income</button>
+            <button onclick="showExpenses()" class="btn btn-danger">Show Expenses</button>
+            
+            <button onclick="downloadTable()" class="btn btn-outline-info">Download below table</button>
+            <div class="table-responsive">
+                <table id="dataTable" class="table table-hover table-dark">
+                    <thead>
+                        <tr>
+                            <th scope="col">Date</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Remark</th>
+                            <th scope="col">Amount</th>
+                            <th scope="col">Payer</th>
+                            <th scope="col">Collector</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for income in incomes %}
+                            <tr class="income-row">
+                                <td scope="row">{{ income.transaction_date }}</td>
+                                <td>{{ income.title }}</td>
+                                <td>{{ income.remark }}</td>
+                                <td>{{ income.amount }}</td>
+                                <td>{{ income.payer }}</td>
+                                <td>{{ income.collector }}</td>
+                            </tr>
+                        {% endfor %}
+                        
+                        {% for expense in expenses %}
+                            <tr class="expense-row" style="display: none;">
+                                <td scope="row">{{ expense.transaction_date }}</td>
+                                <td>{{ expense.title }}</td>
+                                <td>{{ expense.remark }}</td>
+                                <td>{{ expense.amount }}</td>
+                                <td>{{ expense.payer }}</td>
+                                <td>{{ expense.collector }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function showIncome() {
+        document.querySelectorAll('.income-row').forEach(row => row.style.display = 'table-row');
+        document.querySelectorAll('.expense-row').forEach(row => row.style.display = 'none');
+    }
+
+    function showExpenses() {
+        document.querySelectorAll('.income-row').forEach(row => row.style.display = 'none');
+        document.querySelectorAll('.expense-row').forEach(row => row.style.display = 'table-row');
+    }
+
+    function downloadTable() {
+        const ws = XLSX.utils.table_to_sheet(document.getElementById('dataTable'));
+        const wb = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+        XLSX.writeFile(wb, 'table_data.xlsx');
+    }
+</script>
+
+{% endblock %}

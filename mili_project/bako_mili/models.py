@@ -26,16 +26,26 @@ class Net(models.Model):
 
 class Revenue(models.Model):
     payer = models.ForeignKey(User, on_delete=models.DO_NOTHING)
-    amount = models.DecimalField(max_digits=8, decimal_places=2)
+    amount = models.DecimalField(max_digits=10, decimal_places=2)
     service = models.ForeignKey(Service, on_delete=models.DO_NOTHING, related_name='service')
-    transaction_date = models.DateField(default=timezone.now)
+    transaction_date = models.DateField(default=timezone.now())
     remark = models.CharField(max_length=50)
     collector = models.CharField(max_length=50,default="Bs")
     
     def __str__(self):
         return f"{self.payer.username} - {self.service.title}"
 
+class expense(models.Model):
+    title=models.CharField(max_length=30)
+    amount= models.DecimalField(max_digits=10, decimal_places=2)
+    transaction_date = models.DateField(default=timezone.now())
+    remark = models.CharField(max_length=50,null=True)
+    # image = models.ImageField(upload_to='expense_bill_pics',null=True)
+    image = models.ImageField(upload_to='expense_bill_pics/', blank=True, null=True)
+  
     
+    def __str__(self):
+        return 'Rs. {:.2f} - Date: {}'.format(self.amount, self.transaction_date)
     
 class Officer(models.Model):
     name= models.CharField(max_length=50)

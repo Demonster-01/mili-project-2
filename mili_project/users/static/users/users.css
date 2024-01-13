@@ -92,7 +92,6 @@ body {
 
 /* Register css start */
 
-
 .small-message {
 
     font-size: 14px;
@@ -112,7 +111,6 @@ body {
     margin: 10px auto 100px;
     width: 80%;
     max-width: 800px;
-    /* Set a maximum width to prevent the form from becoming too wide on larger screens */
     border-radius: 10px;
     background-color: #f39b9b;
     box-shadow: 0px 0px 15px 2px rgba(140, 153, 228, 0.856);
@@ -120,10 +118,10 @@ body {
     z-index: 1;
     text-align: center;
     overflow: hidden;
-    /* Hide overflowing content */
+   
 }
 
-/* Background image adjustments */
+
 .register-container:before {
     content: '';
     position: absolute;
@@ -135,13 +133,10 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     opacity: 0.7;
-
     text-align: center;
-    /* Adjust the opacity to allow form content to be more visible */
     z-index: -1;
 }
 
-/* Form elements styling */
 .loginform {
     display: flex;
     flex-direction: column;
@@ -150,7 +145,6 @@ body {
 
 
 
-/* Input fields and button styling */
 .form-group {
     margin-bottom: 20px;
 }
@@ -179,7 +173,6 @@ button[type="submit"]:hover {
     background-color: #09e226;
 }
 
-/* Link styling */
 span a {
     color: #1e90ff;
     text-decoration: none;
@@ -199,14 +192,13 @@ span a:hover {
     justify-content: center;
     align-items: center;
     height: 100%; 
-    /* position: relative; */
+   
   }
   .form-container svg{
     display: block;
   }
   .center-form {
-    width: 400px; /* Adjust the form width */
-    /* Add any other styling for the form if needed */
+    width: 400px; 
   }
 
 .account-img {
@@ -217,5 +209,5 @@ span a:hover {
     height: 250px;
     border: 2px solid #000;
     border-radius: 50%;
-    object-fit: cover; /* Maintain aspect ratio and cover the entire frame */
+    object-fit: cover;
   }
