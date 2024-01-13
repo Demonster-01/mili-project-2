@@ -34,6 +34,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'crispy_forms',
     'crispy_bootstrap4',
+    'chartjs',
     "bako_mili.apps.BakoMiliConfig",
     "users.apps.UsersConfig",
     "django.contrib.admin",

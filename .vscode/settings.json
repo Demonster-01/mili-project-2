@@ -1,3 +1,6 @@
 {
+    "python.defaultInterpreterPath": "/path/to/your/python/interpreter",
+    "python.linting.enabled": true,
+    "python.languageServer": "Pylance",
     "local-history.browser.descending": false
 }

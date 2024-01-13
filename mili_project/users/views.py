@@ -42,7 +42,6 @@ def login_view(request):
 
 
 
-@login_required
 # def profile(request):
 #     try:
 #         user_profile = request.user.profile  # Access the user's profile
@@ -50,6 +49,7 @@ def login_view(request):
 #         user_profile = None  # Handle the case where the profile doesn't exist
 #     return render(request, 'users/profile.html', {'user_profile': user_profile})
 
+@login_required
 def profile(request):
     try:
         user_profile = request.user.profile

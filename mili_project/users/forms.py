@@ -53,9 +53,15 @@ class UserUpdateForm(forms.ModelForm):
         super(UserUpdateForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.form_show_labels = False  # Hide all labels in the form
-        self.helper.add_input(Submit('submit', 'Sign Up'))
+        self.helper.add_input(Submit('submit', 'Update'))
 
 class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ['house_no','image']
+        
+    def __init__(self, *args, **kwargs):
+        super(ProfileUpdateForm, self).__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_show_labels = False  # Hide all labels in the form
+        self.helper.add_input(Submit('submit', 'Update'))

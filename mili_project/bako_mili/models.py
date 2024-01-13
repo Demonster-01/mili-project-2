@@ -1,6 +1,5 @@
 from django.db import models
-
-# Create your models here.
+from PIL import Image
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
@@ -26,14 +25,29 @@ class Net(models.Model):
         return self.title
 
 class Revenue(models.Model):
-    customer = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+    payer = models.ForeignKey(User, on_delete=models.DO_NOTHING)
     amount = models.DecimalField(max_digits=8, decimal_places=2)
     service = models.ForeignKey(Service, on_delete=models.DO_NOTHING, related_name='service')
-    # net = models.ForeignKey(net, on_delete=models.DO_NOTHING, related_name='net',null=True)
-
     transaction_date = models.DateField(default=timezone.now)
-    remark=models.CharField(max_length=50)
-    paid_from=models.CharField(max_length=10,default="Online")
-
+    remark = models.CharField(max_length=50)
+    collector = models.CharField(max_length=50,default="Bs")
+    
     def __str__(self):
-        return f"{self.customer.username} - {self.service.title}"
+        return f"{self.payer.username} - {self.service.title}"
+
+    
+    
+class Officer(models.Model):
+    name= models.CharField(max_length=50)
+    role= models.CharField(max_length=20)
+    image = models.ImageField(default='default.jpg', upload_to='profile_pics')
+    
+    def save(self, *args, **kwargs):
+        super(Officer, self).save(*args, **kwargs)
+
+        img = Image.open(self.image.path)
+
+        if img.height > 300 or img.width > 300:
+            output_size = (300,300)
+            img.thumbnail(output_size)
+            img.save(self.image.path)

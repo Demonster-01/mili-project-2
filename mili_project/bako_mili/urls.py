@@ -9,4 +9,5 @@ urlpatterns = [
     path('waterbill/',  views.waterbill, name='waterbill'),
     path('garbagebill/',  views.garbagebill, name='garbagebill'),
     path('netbill/',  views.netbill, name='netbill'),
+    path('income/',  views.income, name='income'),
 ]
