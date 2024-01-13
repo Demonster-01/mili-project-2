@@ -32,6 +32,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'crispy_forms',
+    'crispy_bootstrap4',
+    'chartjs',
     "bako_mili.apps.BakoMiliConfig",
     "users.apps.UsersConfig",
     "django.contrib.admin",
@@ -109,6 +112,9 @@ AUTH_PASSWORD_VALIDATORS = [
 LANGUAGE_CODE = "en-us"
 
 TIME_ZONE = "UTC"
+# TIME_ZONE = "UTC+05:45"
+
+
 
 USE_I18N = True
 
@@ -119,10 +125,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = '/static/'
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, 'static')
-#     ]
-# STATIC_ROOT=os.path.join(BASE_DIR,'assets')
 
 
 # Default primary key field type
@@ -130,6 +132,12 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
+CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 MEDIA_ROOT=os.path.join(BASE_DIR,"media")
 MEDIA_URl="/media/"
+
+LOGIN_REDIRECT_URL = 'index'
+LOGIN_URL = 'user:login'
+

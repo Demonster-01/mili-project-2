@@ -1,13 +1,71 @@
-{% extends "bako_mili/base.html" %}
+{% extends 'bako_mili/base.html' %}
 {% block content %}
-
- <div class="container">
-    <div></div>
-    <div></div>
-    <div></div>
-
- </div>
+  <div class="container-fluid netbill">
+    <div class="services">
+      <div class="serv_head text-light" id="serv">
+        <form class="service_form">
+         
+        
+         <div class="avatar-container">
+            <i class="bi bi-wifi avatar_profile"></i>
+        </div>
+          <input type="text" placeholder="name" disabled />
+          <table class="table border">
+            <thead>
+              <th>Name</th>
+              <th>Price/month</th>
+              <th>Action</th>
+            </thead>
+            <tbody>
+              <h6>Choose Your Package plan</h6>
+              {% for net in nets %}
+                <tr>
+                  <td>{{ net.title }}</td>
+                  <td>{{ net.speed }}</td>
+                  <td>
+                    <input type="radio" id="net_{{ forloop.counter }}" name="selected_net" value="{{ net.id }}" />
+                    <label for="net_{{ forloop.counter }}">Select</label>
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          <div class="years">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="duration" id="3month" />
+                        <label class="form-check-label" for="3month">3 months</label>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="duration" id="6month" />
+                        <label class="form-check-label" for="6month">6 months</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="duration" id="9month" />
+                        <label class="form-check-label" for="9month">9 months</label>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="duration" id="12month" checked />
+                        <label class="form-check-label" for="12month">1 year</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+          <input type="text" placeholder="Remarks" /><br>
+          <input type="submit" class="btn btn-success" value="Pay" />
+        </form>
+      </div>
+    </div>
+  </div>
 {% endblock %}
-
-
-

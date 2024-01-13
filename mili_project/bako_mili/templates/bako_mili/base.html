@@ -13,6 +13,14 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{% static "mili/main.css" %}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.5/xlsx.full.min.js"></script>
+
+    
+<!-- Add these links to your HTML file's head section -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
     {% block extra_css %}{% endblock %}
 
 
@@ -28,28 +36,33 @@
           </div>
 
           <ul class="list-unstyled px-2">
-              <li class="active"><a href="#" class="text-decoration-none px-3 py-2 d-block"><i
+              <li class="active"><a href="{% url 'bako_mili:index' %}" class="text-decoration-none px-3 py-2 d-block"><i
                           class="bi bi-house-door-fill"></i> Dashboard</a></li>
-              <li class=""><a href="{% url 'waterbill' %}" class="text-decoration-none px-3 py-2 d-block"><i class="bi bi-droplet-half"></i>
+              <li class=""><a href="{% url 'bako_mili:waterbill' %}" class="text-decoration-none px-3 py-2 d-block"><i class="bi bi-droplet-half"></i>
                       Water bill</a></li>
-              <li class=""><a href="{% url 'garbagebill' %}" class="text-decoration-none px-3 py-2 d-block d-flex justify-content-between">
+              <li class=""><a href="{% url 'bako_mili:garbagebill' %}" class="text-decoration-none px-3 py-2 d-block d-flex justify-content-between">
                       <span><i class="bi bi-trash"></i> Garbage bill</span>
-                      <span class="bg-dark rounded-pill text-white py-0 px-2">02</span>
+                      {% comment %} <span class="bg-dark rounded-pill text-white py-0 px-2">02</span> {% endcomment %}
                   </a>
               </li>
-              <li class=""><a href="{% url 'netbill' %}" class="text-decoration-none px-3 py-2 d-block"><i class="bi bi-wifi"></i> Net bill</a></li>
-              <li class=""><a href="#" class="text-decoration-none px-3 py-2 d-block"><i class="bi bi-chat-left-dots"></i>
-                      Messages</a></li>
+              <li class=""><a href="{% url 'bako_mili:netbill' %}" class="text-decoration-none px-3 py-2 d-block"><i class="bi bi-wifi"></i> Net bill</a></li>
+              <li class=""><a href="{% url 'bako_mili:income' %}" class="text-decoration-none px-3 py-2 d-block"><i class="bi bi-ui-checks"></i>
+                      Record</a></li>
           </ul>
           <hr class="h-color mx-2">
-
+          {% if user.is_authenticated %}
           <ul class="list-unstyled px-2">
-              <li class=""><a href="#" class="text-decoration-none px-3 py-2 d-block"><i class="bi bi-person-square"></i>
+              <li class=""><a href="{% url 'bako_mili:data' %}" class="text-decoration-none px-3 py-2 d-block"><i class="bi bi-file-earmark-arrow-down"></i>
+                      Download</a></li>
+              <li class=""><a href="{% url 'user:profile' %}" class="text-decoration-none px-3 py-2 d-block"><i class="bi bi-person-square"></i>
                       Profile</a></li>
               <li class=""><a href="#" class="text-decoration-none px-3 py-2 d-block"><i class="bi bi-bell"></i>
                       Notifications</a></li>
+              <li class=""><a href="{% url 'user:logout' %}" class="text-decoration-none px-3 py-2 d-block"><i class="bi bi-box-arrow-left"></i></i>
+                      Logout</a></li>
 
           </ul>
+          {% else %}
           <ul class="list-unstyled px-2 login">
             <li class=""> <a href="{% url 'user:login' %}" class="text-decoration-none px-3 py-2 d-block"><i class="bi bi-person-square"></i>
                     Login</a></li>
@@ -57,18 +70,15 @@
                     Register</a></li>
 
         </ul>
-
+        {% endif %}
       </div>
       <div class="content">
-          <nav class="navbar navbar-expand-md navbar-light">
-              {% comment %} <div class="container-fluid"> {% endcomment %}
                 {% block content%}
 
                 {% endblock %}
                  
                
-              {% comment %} </div> {% endcomment %}
-          </nav>
+              
       </div>
   </div>
 
@@ -92,5 +102,14 @@
   })
 
 </script>
+<script>
+  setTimeout(function() {
+    var alerts = document.querySelectorAll('.alert');
+    alerts.forEach(function(alert) {
+      alert.style.display = 'none';
+    });
+  }, 15000); // 60000 milliseconds = 1 minute
+</script>
+
   </body>
 </html>

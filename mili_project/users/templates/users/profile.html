@@ -1,0 +1,30 @@
+{% extends 'bako_mili/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block extra_css %}
+  <link rel="stylesheet" type="text/css" href="{% static 'users/users.css' %}" />
+{% endblock %}
+{% block content %}
+  <div class="content-section">
+    <div class="profile">
+      <div class="media rounded-circle">
+        <img class="rounded-circle account-img" src="{{ user.profile.image.url }}" />
+      </div>
+      <!-- FORM HERE -->
+      <div class="form-container">
+        <form method="POST" enctype="multipart/form-data" class="center-form">
+          {% csrf_token %}
+          <fieldset class="form-group">
+            <legend class="border-bottom mb-4">profile info</legend>
+            {{ u_form|crispy }}
+            {{ p_form|crispy }}
+          </fieldset>
+          <div class="form-group">
+            <button class="btn btn-outline-info btn-sm" type="submit">update</button>
+          </div>
+      
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}
